@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: #111419;
+  --color-popover-foreground: #eeeef1;
+  --color-muted-foreground: #979aa3;
+  --color-border: #303640;
+  --color-ring: #aac4f6;
+  --font-sans: Arial, 'Microsoft YaHei', sans-serif;
+  --font-heading: Arial, 'Microsoft YaHei', sans-serif;
+}
+:root,.dark {
+  --background: #0b0c0e;
+  --foreground: #eeeef1;
+  --muted-foreground: #979aa3;
+}

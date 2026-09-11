@@ -1,0 +1,188 @@
+{
+  "ui-merge-01": {
+    "title": "主界面 3",
+    "width": 1920,
+    "height": 1080,
+    "group": "ui-merge"
+  },
+  "ui-merge-02": {
+    "title": "升星 1",
+    "width": 1920,
+    "height": 1080,
+    "group": "ui-merge"
+  },
+  "ui-merge-03": {
+    "title": "好感度提升 1",
+    "width": 1920,
+    "height": 1080,
+    "group": "ui-merge"
+  },
+  "ui-merge-04": {
+    "title": "对话界面",
+    "width": 1928,
+    "height": 1088,
+    "group": "ui-merge"
+  },
+  "ui-merge-05": {
+    "title": "工坊界面",
+    "width": 1928,
+    "height": 1088,
+    "group": "ui-merge"
+  },
+  "ui-merge-06": {
+    "title": "订单界面A",
+    "width": 1928,
+    "height": 1088,
+    "group": "ui-merge"
+  },
+  "ui-merge-07": {
+    "title": "设置",
+    "width": 1928,
+    "height": 1088,
+    "group": "ui-merge"
+  },
+  "ui-merge-08": {
+    "title": "购买岛屿界面",
+    "width": 1920,
+    "height": 1080,
+    "group": "ui-merge"
+  },
+  "ui-rogue-01": {
+    "title": "主界面(新）",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-02": {
+    "title": "boss连战-战斗失败",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-03": {
+    "title": "boss连战-战斗胜利",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-04": {
+    "title": "商场超值礼包",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-05": {
+    "title": "复活卡（新）",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-06": {
+    "title": "宝箱jiemian",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-07": {
+    "title": "恭喜获得",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-08": {
+    "title": "成长基金",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-09": {
+    "title": "成长礼包",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-10": {
+    "title": "挂奖励",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-11": {
+    "title": "排行榜",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-12": {
+    "title": "新功能解锁1",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-13": {
+    "title": "方案1s",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-14": {
+    "title": "月卡（新）",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-15": {
+    "title": "爬塔基金",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-16": {
+    "title": "营地",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-17": {
+    "title": "角色活动礼包",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-18": {
+    "title": "角色活动礼包2",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-19": {
+    "title": "超值礼包B",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-20": {
+    "title": "通行证 (2)",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-21": {
+    "title": "闯关成功",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-22": {
+    "title": "首充界面-僵尸新娘",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  },
+  "ui-rogue-23": {
+    "title": "首冲礼包",
+    "width": 1080,
+    "height": 1920,
+    "group": "ui-rogue"
+  }
+}
