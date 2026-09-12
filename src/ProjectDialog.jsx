@@ -8,7 +8,10 @@ import {
 } from '@/components/ui/dialog';
 import { uiAssets } from './content.js';
 
-const asset = name => `/assets/${name}.webp`;
+
+const BASE_URL = import.meta.env.BASE_URL;
+const asset = name => `${BASE_URL}assets/${name}.webp`;
+
 
 export default function ProjectDialog({ project, onClose }) {
   return (
@@ -25,7 +28,7 @@ export default function ProjectDialog({ project, onClose }) {
         <div className={`dialog-gallery ${project.layout ? `ui-gallery ui-gallery-${project.layout}` : ''}`}>
           {project.video && (
             <video key={project.video} controls playsInline preload="none" poster={asset(project.image)}>
-              <source src={`/assets/${project.video}`} type="video/mp4" />
+              <source src={`${BASE_URL}assets/${project.video}`} type="video/mp4" />
               你的浏览器暂不支持视频播放。
             </video>
           )}
@@ -48,3 +51,4 @@ export default function ProjectDialog({ project, onClose }) {
     </Dialog>
   );
 }
+
