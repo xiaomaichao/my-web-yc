@@ -37,7 +37,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build -- --base=/my-web-yc/
+        run: pnpm exec vite build --config vite.config.mjs --base=/my-web-yc/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
