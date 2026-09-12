@@ -4,8 +4,9 @@ import BorderGlow from '@/components/BorderGlow';
 import { profile, experiences, projects, strengths, uiProjects, uiAssets, gameVideos, visualWorkCount } from './content.js';
 import usePortfolioMotion from './usePortfolioMotion.js';
 
-const asset = (name) => `/assets/${name}.webp`;
-const managementAsset = (name) => `/assets/${name}`;
+const BASE_URL = import.meta.env.BASE_URL;
+const asset = (name) => `${BASE_URL}assets/${name}.webp`;
+const managementAsset = (name) => `${BASE_URL}assets/${name}`;
 const navItems = [['about', '关于我'], ['expertise', '个人优势'], ['work', '精选作品']];
 const ProjectDialog = lazy(() => import('./ProjectDialog.jsx'));
 const managementViews = [
@@ -155,8 +156,8 @@ function DevelopmentFlowGallery() {
           {activeGroup.notes.map(([label, x, y]) => <text key={label} className="diagram-note" x={x} y={y}>{label}</text>)}
           {activeGroup.nodes.map(([key, image, label, x, y, width, height, labelY, isMain]) => <g key={key} className={isMain ? 'diagram-node is-main' : 'diagram-node'}>
             <rect className="node-frame" x={x - 6} y={y - 6} width={width + 12} height={height + 12} rx="16" />
-            <a href={`/assets/${image}`} target="_blank" rel="noopener noreferrer" aria-label={`查看${label}原图`}>
-              <image href={`/assets/${image}`} x={x} y={y} width={width} height={height} preserveAspectRatio="xMidYMid slice" clipPath={`url(#flow-clip-${activeGroup.id}-${key})`} />
+            <a href={`${BASE_URL}assets/${image}`} target="_blank" rel="noopener noreferrer" aria-label={`查看${label}原图`}>
+              <image href={`${BASE_URL}assets/${image}`} x={x} y={y} width={width} height={height} preserveAspectRatio="xMidYMid slice" clipPath={`url(#flow-clip-${activeGroup.id}-${key})`} />
             </a>
             <text className="node-label" x={x + width / 2} y={labelY}>{label}</text>
           </g>)}
@@ -277,9 +278,9 @@ function UIProjectCard({ project, onOpen }) {
 
 function GameVideoCard({ item }) {
   return <article className={`game-video-card video-${item.layout ?? 'portrait'}`}>
-    <video controls playsInline preload="none" poster={`/assets/${item.posterFile}`} aria-label={`${item.title}角色活动礼包视频`} onPlay={event => {
+    <video controls playsInline preload="none" poster={`${BASE_URL}assets/${item.posterFile}`} aria-label={`${item.title}角色活动礼包视频`} onPlay={event => {
       document.querySelectorAll('.game-video-card video').forEach(video => { if (video !== event.currentTarget) video.pause(); });
-    }}><source src={`/assets/${item.file}`} type="video/mp4" />你的浏览器暂不支持视频播放。<a href={`/assets/${item.file}`}>打开视频文件</a></video>
+    }}><source src={`${BASE_URL}assets/${item.file}`} type="video/mp4" />你的浏览器暂不支持视频播放。<a href={`${BASE_URL}assets/${item.file}`}>打开视频文件</a></video>
     <div className="video-caption"><span className="eyebrow">{item.id} / GAME MOTION</span><h4>{item.title}</h4><p>{item.subtitle}</p></div>
   </article>;
 }
@@ -418,7 +419,7 @@ export default function App() {
 
     <main>
       <section className="hero" id="home" aria-labelledby="hero-title">
-        <video ref={videoRef} className="hero-video" muted loop playsInline preload="none" poster={asset('knight')} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-hidden="true">{heroVideoEnabled && <source src="/assets/city.mp4" type="video/mp4" />}</video>
+        <video ref={videoRef} className="hero-video" muted loop playsInline preload="none" poster={asset('knight')} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-hidden="true">{heroVideoEnabled && <source src={`${BASE_URL}assets/city.mp4`} type="video/mp4" />}</video>
         <div className="hero-shade" />
         <div className="hero-content hero-nameplate shell">
           <div className="hero-topline"><span className="status-dot" /> VISUAL · AI · GAME DESIGN</div>
