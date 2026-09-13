@@ -326,21 +326,25 @@ export default function App() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const smallScreen = window.matchMedia('(max-width: 760px)');
     const connection = navigator.connection;
+    const deviceMemory = navigator.deviceMemory;
     let idleId;
     let timerId;
     let idleReady = false;
     let heroVisible = false;
 
     const canUseMotionVideo = () => {
-      const constrainedNetwork = connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType);
-      return !reducedMotion.matches && !smallScreen.matches && !constrainedNetwork;
+      const constrainedNetwork = connection?.saveData
+        || (connection?.effectiveType && connection.effectiveType !== '4g');
+      const constrainedDevice = typeof deviceMemory === 'number' && deviceMemory < 4;
+      return document.visibilityState === 'visible'
+        && !reducedMotion.matches
+        && !smallScreen.matches
+        && !constrainedNetwork
+        && !constrainedDevice;
     };
     const maybeEnableVideo = () => {
-      if (!canUseMotionVideo()) {
-        setHeroVideoEnabled(false);
-        return;
-      }
-      if (idleReady && heroVisible) setHeroVideoEnabled(true);
+      const shouldEnable = canUseMotionVideo() && idleReady && heroVisible;
+      setHeroVideoEnabled(current => current === shouldEnable ? current : shouldEnable);
     };
 
     const cancelScheduledLoad = () => {
@@ -350,30 +354,41 @@ export default function App() {
     const scheduleVideo = () => {
       cancelScheduledLoad();
       idleReady = false;
+      setHeroVideoEnabled(false);
       if (!canUseMotionVideo()) {
-        setHeroVideoEnabled(false);
         return;
       }
       const enable = () => { idleReady = true; maybeEnableVideo(); };
-      if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(enable, { timeout: 1600 });
-      else timerId = window.setTimeout(enable, 900);
+      timerId = window.setTimeout(() => {
+        if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(enable, { timeout: 2000 });
+        else enable();
+      }, 1800);
     };
 
     const hero = document.getElementById('home');
     const heroObserver = new IntersectionObserver(([entry]) => {
       heroVisible = entry.isIntersecting;
       maybeEnableVideo();
-    }, { rootMargin: '180px 0px', threshold: 0 });
+    }, { rootMargin: '0px', threshold: 0.05 });
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') scheduleVideo();
+      else {
+        cancelScheduledLoad();
+        setHeroVideoEnabled(false);
+      }
+    };
     if (hero) heroObserver.observe(hero);
     scheduleVideo();
     reducedMotion.addEventListener('change', scheduleVideo);
     smallScreen.addEventListener('change', scheduleVideo);
     connection?.addEventListener?.('change', scheduleVideo);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => {
       cancelScheduledLoad();
       reducedMotion.removeEventListener('change', scheduleVideo);
       smallScreen.removeEventListener('change', scheduleVideo);
       connection?.removeEventListener?.('change', scheduleVideo);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       heroObserver.disconnect();
     };
   }, []);
@@ -382,6 +397,7 @@ export default function App() {
     const video = videoRef.current;
     if (!video || !heroVideoEnabled) {
       video?.pause();
+      if (video?.currentSrc) video.load();
       return undefined;
     }
 

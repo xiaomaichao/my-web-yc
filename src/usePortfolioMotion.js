@@ -13,6 +13,7 @@ export default function usePortfolioMotion() {
     if (reduceMotion) return undefined;
 
     const context = gsap.context(() => {
+      ScrollTrigger.config({ ignoreMobileResize: true });
       const intro = gsap.timeline({
         defaults: { ease: 'power4.out' },
       });
@@ -68,7 +69,7 @@ export default function usePortfolioMotion() {
         .to('.hero-tagline', { y: 0, autoAlpha: 1, duration: 1.05 }, 1.38)
         .to('.hero-foot', { y: 0, autoAlpha: 1, duration: 1 }, 1.55);
 
-      gsap.utils.toArray('main > section:not(.hero), .about, .work, .expertise, .contact').forEach(section => {
+      gsap.utils.toArray('main > section:not(.hero)').forEach(section => {
         const label = section.querySelector('.section-label');
         const heading = section.querySelector('.about-copy h2, .section-heading h2, .contact-main h2');
 
@@ -169,19 +170,23 @@ export default function usePortfolioMotion() {
               start: 'top bottom',
               end: 'bottom top',
               scrub: 0.9,
+              invalidateOnRefresh: true,
             },
           });
         });
       }
     }, root);
 
-    const refresh = () => ScrollTrigger.refresh();
-    window.addEventListener('load', refresh, { once: true });
-    const refreshTimer = window.setTimeout(refresh, 300);
+    let refreshFrame = 0;
+    const refresh = () => {
+      refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    };
+    if (document.readyState === 'complete') refresh();
+    else window.addEventListener('load', refresh, { once: true });
 
     return () => {
       window.removeEventListener('load', refresh);
-      window.clearTimeout(refreshTimer);
+      window.cancelAnimationFrame(refreshFrame);
       context.revert();
     };
   }, []);

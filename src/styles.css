@@ -15,7 +15,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 
 /* GSAP motion surfaces */
-.section-heading,.about-copy,.contact-main{overflow:clip}.hero-name-solid,.hero-name-outline,.hero-name-meta{will-change:transform,clip-path}
+.section-heading,.about-copy,.contact-main{overflow:clip}
 @media(prefers-reduced-motion:reduce){.hero-name-solid,.hero-name-outline,.hero-name-meta,.project-image,.ui-cover,.portrait-frame,.project-image>img,.portrait-frame>img{will-change:auto}}
 
 /* Game UI collections and dedicated video works */
